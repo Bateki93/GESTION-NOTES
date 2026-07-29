@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="GestionNotes.Api/GestionNotes.Api.csproj" />
+  <Project Path="GestionNotes.Application/GestionNotes.Application.csproj" />
+  <Project Path="GestionNotes.Blazor/GestionNotes.Blazor.csproj" />
+  <Project Path="GestionNotes.Core/GestionNotes.Core.csproj" />
+  <Project Path="GestionNotes.Infrastructure/GestionNotes.Infrastructure.csproj" />
+</Solution>

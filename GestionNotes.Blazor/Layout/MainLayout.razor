@@ -1,0 +1,41 @@
+﻿@using GestionNotes.Blazor.Services
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+@inherits LayoutComponentBase
+
+<div class="page">
+    <AuthorizeView>
+        <Authorized>
+            <div class="sidebar">
+                <NavMenu />
+            </div>
+
+            <main>
+                <div class="top-row px-4 auth">
+                    <span>Connecté en tant que @context.User.Identity!.Name</span>
+                    <a href="/logout" @onclick="OnLogoutAsync" class="btn btn-link">Déconnexion</a>
+                </div>
+
+                <article class="content px-4">
+                    @Body
+                </article>
+            </main>
+        </Authorized>
+        <NotAuthorized>
+            <main>
+                <article class="content px-4">
+                    @Body
+                </article>
+            </main>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
+
+@code {
+    private async Task OnLogoutAsync()
+    {
+        await AuthService.LogoutAsync();
+        Navigation.NavigateTo("/", forceLoad: true);
+    }
+}

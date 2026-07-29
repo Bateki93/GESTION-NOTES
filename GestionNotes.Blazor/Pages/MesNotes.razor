@@ -1,0 +1,61 @@
+@page "/mes-notes"
+@using GestionNotes.Blazor.Services
+@inject NoteService NoteService
+@inject AuthService AuthService
+
+<PageTitle>Mes notes</PageTitle>
+
+<h3>Mes notes</h3>
+
+@if (loading)
+{
+    <p>Chargement...</p>
+}
+else if (notes.Count == 0)
+{
+    <p>Aucune note pour le moment.</p>
+}
+else
+{
+    @if (notes.Count > 0)
+    {
+        <div class="debug-info">
+            <p>Notes trouvées : @notes.Count</p>
+            <p>Première note : MatiereId=@notes[0].MatiereId, MatiereLibelle='@notes[0].MatiereLibelle'</p>
+        </div>
+    }
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Matière</th>
+                <th>Note</th>
+                <th>Semestre</th>
+                <th>Année</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var n in notes)
+            {
+                <tr>
+                    <td class="matiere-cell">@n.MatiereLibelle</td>
+                    <td><strong>@n.Valeur / 20</strong></td>
+                    <td>Semestre @n.Semestre</td>
+                    <td>@n.Annee</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Models.NoteModel> notes = [];
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var userId = await AuthService.GetUserIdAsync();
+        notes = await NoteService.GetByEleveIdAsync(userId);
+        loading = false;
+    }
+}

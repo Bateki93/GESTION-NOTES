@@ -1,0 +1,108 @@
+@page "/matieres"
+@using GestionNotes.Blazor.Services
+@inject MatiereService MatiereService
+
+<PageTitle>Matières</PageTitle>
+
+<h3>Gestion des matières</h3>
+
+@if (loading)
+{
+    <p>Chargement...</p>
+}
+else
+{
+    <button class="btn btn-success mb-3" @onclick="StartCreate">Nouvelle matière</button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Libellé</th>
+                <th>Coefficient</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in matieres)
+            {
+                <tr>
+                    <td>@m.Code</td>
+                    <td>@m.Libelle</td>
+                    <td>@m.Coefficient</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" @onclick="() => StartEdit(m)">Modifier</button>
+                        <button class="btn btn-sm btn-danger" @onclick="() => Delete(m.Id)">Supprimer</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (showForm)
+    {
+        <div class="card p-3">
+            <h5>@(editingId > 0 ? "Modifier" : "Nouvelle") matière</h5>
+            <div class="mb-2">
+                <input @bind="editModel.Code" class="form-control" placeholder="Code (ex: MATH101)" />
+            </div>
+            <div class="mb-2">
+                <input @bind="editModel.Libelle" class="form-control" placeholder="Libellé" />
+            </div>
+            <div class="mb-2">
+                <input @bind="editModel.Coefficient" type="number" class="form-control" placeholder="Coefficient" />
+            </div>
+            <div>
+                <button class="btn btn-success" @onclick="Save">Enregistrer</button>
+                <button class="btn btn-secondary" @onclick="Cancel">Annuler</button>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private List<Models.MatiereModel> matieres = [];
+    private bool loading = true;
+    private bool showForm;
+    private int editingId;
+    private Models.MatiereModel editModel = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        matieres = await MatiereService.GetAllAsync();
+        loading = false;
+    }
+
+    private void StartCreate()
+    {
+        editingId = 0;
+        editModel = new();
+        showForm = true;
+    }
+
+    private void StartEdit(Models.MatiereModel m)
+    {
+        editingId = m.Id;
+        editModel = new() { Id = m.Id, Code = m.Code, Libelle = m.Libelle, Coefficient = m.Coefficient };
+        showForm = true;
+    }
+
+    private async Task Save()
+    {
+        if (editingId > 0)
+            await MatiereService.UpdateAsync(editingId, editModel);
+        else
+            await MatiereService.CreateAsync(editModel);
+
+        showForm = false;
+        matieres = await MatiereService.GetAllAsync();
+    }
+
+    private async Task Delete(int id)
+    {
+        await MatiereService.DeleteAsync(id);
+        matieres = await MatiereService.GetAllAsync();
+    }
+
+    private void Cancel() => showForm = false;
+}

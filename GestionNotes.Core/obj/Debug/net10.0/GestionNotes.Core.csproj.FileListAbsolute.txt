@@ -1,0 +1,11 @@
+/home/justin/GestionNotes/GestionNotes.Core/bin/Debug/net10.0/GestionNotes.Core.deps.json
+/home/justin/GestionNotes/GestionNotes.Core/bin/Debug/net10.0/GestionNotes.Core.dll
+/home/justin/GestionNotes/GestionNotes.Core/bin/Debug/net10.0/GestionNotes.Core.pdb
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.AssemblyInfoInputs.cache
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.AssemblyInfo.cs
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.csproj.CoreCompileInputs.cache
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.dll
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/refint/GestionNotes.Core.dll
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.pdb
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/ref/GestionNotes.Core.dll

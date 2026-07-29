@@ -1,0 +1,65 @@
+@page "/eleves"
+@using GestionNotes.Blazor.Services
+@inject EleveService EleveService
+
+<PageTitle>Élèves</PageTitle>
+
+<h3>Gestion des élèves</h3>
+
+@if (loading)
+{
+    <p>Chargement...</p>
+}
+else
+{
+    <a href="/register" class="btn btn-success mb-3">Nouvel élève</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Matricule</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in eleves.Items)
+            {
+                <tr>
+                    <td>@e.Matricule</td>
+                    <td>@e.Nom</td>
+                    <td>@e.Prenom</td>
+                    <td>@e.Email</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" @onclick="() => Delete(e.UserId)">Supprimer</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav>
+        <ul class="pagination">
+            <li class="page-item disabled"><span class="page-link">Page @eleves.Page / @eleves.TotalPages</span></li>
+        </ul>
+    </nav>
+}
+
+@code {
+    private Models.PagedResult<Models.EleveModel> eleves = new();
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        eleves = await EleveService.GetAllAsync();
+        loading = false;
+    }
+
+    private async Task Delete(Guid userId)
+    {
+        await EleveService.DeleteAsync(userId);
+        eleves = await EleveService.GetAllAsync();
+    }
+}
