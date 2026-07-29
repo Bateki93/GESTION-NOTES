@@ -284,16 +284,4 @@
     }
 
     private void Cancel() => showForm = false;
-
-    private void OnMatiereChange(ChangeEventArgs e)
-    {
-        if (int.TryParse(e.Value?.ToString(), out var id))
-            editModel.MatiereId = id;
-    }
-
-    private void OnEleveChange(ChangeEventArgs e)
-    {
-        if (Guid.TryParse(e.Value?.ToString(), out var id))
-            editModel.EleveId = id;
-    }
 }

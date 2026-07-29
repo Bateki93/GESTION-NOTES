@@ -9,3 +9,4 @@
 /home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/refint/GestionNotes.Core.dll
 /home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.pdb
 /home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/ref/GestionNotes.Core.dll
+/home/justin/GestionNotes/GestionNotes.Core/obj/Debug/net10.0/GestionNotes.Core.sourcelink.json

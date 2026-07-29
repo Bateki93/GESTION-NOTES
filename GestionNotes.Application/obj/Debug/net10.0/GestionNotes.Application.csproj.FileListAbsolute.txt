@@ -13,3 +13,4 @@
 /home/justin/GestionNotes/GestionNotes.Application/obj/Debug/net10.0/refint/GestionNotes.Application.dll
 /home/justin/GestionNotes/GestionNotes.Application/obj/Debug/net10.0/GestionNotes.Application.pdb
 /home/justin/GestionNotes/GestionNotes.Application/obj/Debug/net10.0/ref/GestionNotes.Application.dll
+/home/justin/GestionNotes/GestionNotes.Application/obj/Debug/net10.0/GestionNotes.Application.sourcelink.json

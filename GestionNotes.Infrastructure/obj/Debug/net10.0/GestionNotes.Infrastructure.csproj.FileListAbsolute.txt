@@ -17,3 +17,4 @@
 /home/justin/GestionNotes/GestionNotes.Infrastructure/obj/Debug/net10.0/GestionNotes.Infrastructure.pdb
 /home/justin/GestionNotes/GestionNotes.Infrastructure/obj/Debug/net10.0/GestionNotes.Infrastructure.genruntimeconfig.cache
 /home/justin/GestionNotes/GestionNotes.Infrastructure/obj/Debug/net10.0/ref/GestionNotes.Infrastructure.dll
+/home/justin/GestionNotes/GestionNotes.Infrastructure/obj/Debug/net10.0/GestionNotes.Infrastructure.sourcelink.json

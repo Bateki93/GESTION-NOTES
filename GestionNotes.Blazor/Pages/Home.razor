@@ -32,7 +32,7 @@
                         </div>
                         <div class="stat-info">
                             <span class="stat-label">Matières</span>
-                            <span class="stat-link" onclick="() => Navigation.NavigateTo('/matieres')">Gérer →</span>
+                            <span class="stat-link" @onclick="GoToMatieres">Gérer →</span>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                         </div>
                         <div class="stat-info">
                             <span class="stat-label">Élèves</span>
-                            <span class="stat-link" onclick="() => Navigation.NavigateTo('/eleves')">Gérer →</span>
+                            <span class="stat-link" @onclick="GoToEleves">Gérer →</span>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
                         </div>
                         <div class="stat-info">
                             <span class="stat-label">Notes</span>
-                            <span class="stat-link" onclick="() => Navigation.NavigateTo('/notes')">Gérer →</span>
+                            <span class="stat-link" @onclick="GoToNotes">Gérer →</span>
                         </div>
                     </div>
                 </div>
@@ -60,15 +60,15 @@
                 <div class="quick-actions">
                     <h2 class="section-title">Actions rapides</h2>
                     <div class="actions-row">
-                        <button class="action-btn" onclick="() => Navigation.NavigateTo('/matieres')">
+                        <button class="action-btn" @onclick="GoToMatieres">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                             Nouvelle matière
                         </button>
-                        <button class="action-btn" onclick="() => Navigation.NavigateTo('/register')">
+                        <button class="action-btn" @onclick="GoToRegister">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
                             Nouvel élève
                         </button>
-                        <button class="action-btn" onclick="() => Navigation.NavigateTo('/notes')">
+                        <button class="action-btn" @onclick="GoToNotes">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                             Saisir une note
                         </button>
@@ -85,7 +85,7 @@
                         <div class="stat-info">
                             <span class="stat-label">Mes notes</span>
                             <span class="stat-value">Consulte tes résultats</span>
-                            <span class="stat-link" onclick="() => Navigation.NavigateTo('/mes-notes')">Voir mes notes →</span>
+                            <span class="stat-link" @onclick="GoToMesNotes">Voir mes notes →</span>
                         </div>
                     </div>
                 </div>
@@ -181,4 +181,10 @@
             ? displayName[..2].ToUpper()
             : displayName.ToUpper();
     }
+
+    private void GoToMatieres() => Navigation.NavigateTo("/matieres");
+    private void GoToEleves() => Navigation.NavigateTo("/eleves");
+    private void GoToNotes() => Navigation.NavigateTo("/notes");
+    private void GoToRegister() => Navigation.NavigateTo("/register");
+    private void GoToMesNotes() => Navigation.NavigateTo("/mes-notes");
 }
